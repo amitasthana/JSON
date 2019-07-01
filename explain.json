@@ -1,0 +1,131 @@
+{
+    "stages": [
+        {
+            "$cursor": {
+                "query": {
+                    "$and": [
+                        {
+                            "zin.zid": "kdjheoihif"
+                        },
+                        {
+                            "phgsidzid": "adas9887",
+                            "kptcus": {
+                                "$exists": true
+                            },
+                            "kptcus.zogiName": {
+                                "$in": [
+                                    "efwfw"
+                                ]
+                            },
+                            "kptcus.dfgcs.cohde": {
+                                "$in": [
+                                    "2312cdcd"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "fields": {
+                    "selectingDate": 1,
+                    "kptcus.zogiName": 1,
+                    "kptcus.dfgcs.cohde": 1,
+                    "zin.zid": 1,
+                    "zin.type": 1,
+                    "_id": 1
+                },
+                "queryPlanner": {
+                    "plannerVersion": 1,
+                    "namespace": "History.collectionname",
+                    "indexFilterSet": false,
+                    "parsedQuery": {
+                        "$and": [
+                            {
+                                "kptcus.zogiName": {
+                                    "$eq": "efwfw"
+                                }
+                            },
+                            {
+                                "kptcus.dfgcs.cohde": {
+                                    "$eq": "2312cdcd"
+                                }
+                            },
+                            {
+                                "zin.zid": {
+                                    "$eq": "kdjheoihif"
+                                }
+                            },
+                            {
+                                "phgsidzid": {
+                                    "$eq": "adas9887"
+                                }
+                            },
+                            {
+                                "kptcus": {
+                                    "$exists": true
+                                }
+                            }
+                        ]
+                    },
+                    "winningPlan": {
+                        "stage": "COLLSCAN",
+                        "filter": {
+                            "$and": [
+                                {
+                                    "kptcus.zogiName": {
+                                        "$eq": "efwfw"
+                                    }
+                                },
+                                {
+                                    "kptcus.dfgcs.cohde": {
+                                        "$eq": "2312cdcd"
+                                    }
+                                },
+                                {
+                                    "zin.zid": {
+                                        "$eq": "kdjheoihif"
+                                    }
+                                },
+                                {
+                                    "phgsidzid": {
+                                        "$eq": "adas9887"
+                                    }
+                                },
+                                {
+                                    "kptcus": {
+                                        "$exists": true
+                                    }
+                                }
+                            ]
+                        },
+                        "direction": "forward"
+                    },
+                    "rejectedPlans": []
+                }
+            }
+        },
+        {
+            "$project": {
+                "_id": true,
+                "selectingDate": true,
+                "fin": {
+                    "type": true,
+                    "id": true
+                },
+                "kptcus": {
+                    "zogiName": true,
+                    "dtcs": {
+                        "code": true
+                    }
+                }
+            }
+        },
+        {
+            "$sort": {
+                "sortKey": {
+                    "selectingDate": -1
+                }
+            }
+        }
+    ],
+    "ok": 1
+}
